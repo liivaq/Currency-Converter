@@ -2,14 +2,10 @@
 
 require_once 'vendor/autoload.php';
 
-$info = new \App\CurrencyInfo();
-$currencies = $info->getData();
+$currency = strtoupper(readline('Enter currency to convert to: '));
+$amount = (float)readline('Enter amount: ');
 
-$userInput = 'AUD';
+$converter = new \App\CurrencyConverter();
 
-foreach ($currencies->Currencies->Currency as $currency){
-    if($currency->ID === $userInput){
-        echo $currency->ID;
-    }
-}
+echo $amount.' EUR to '.$currency.' = '.$converter->convertCurrency($amount, $currency).PHP_EOL;
 
