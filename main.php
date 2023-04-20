@@ -6,6 +6,11 @@ $currency = strtoupper(readline('Enter currency to convert to: '));
 $amount = (float)readline('Enter amount: ');
 
 $converter = new \App\CurrencyConverter();
+$result = $converter->convertCurrency($amount, $currency);
 
-echo $amount.' EUR to '.$currency.' = '.$converter->convertCurrency($amount, $currency).PHP_EOL;
+if ($result) {
+    echo $amount . ' EUR to ' . $currency . ' = ' . $result . PHP_EOL;
+} else {
+    echo 'Sorry, no information found about ' . $currency . PHP_EOL;
+}
 
